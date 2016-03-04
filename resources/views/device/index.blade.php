@@ -48,8 +48,8 @@
                     </div>
                 </div>
             @endforeach
-        </div>
 
-        {!! $devices->links() !!}
+            {!! $devices->links() !!}
+        </div>
 
 @endsection

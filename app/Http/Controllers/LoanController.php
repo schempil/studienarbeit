@@ -22,10 +22,10 @@ class LoanController extends Controller
     }
 
     public function create() {
-        $device = Device::findOrFail($_REQUEST['device']);
+        $selectedDevice = Device::findOrFail($_REQUEST['device']);
         $devices = Device::where('available', '=', '1')->get();
         $people = Person::all();
-        return view('loan.create', ['devices' => $devices, 'people' => $people, 'device' => $device]);
+        return view('loan.create', ['devices' => $devices, 'people' => $people, 'selectedDevice' => $selectedDevice]);
     }
 
     public function store(Request $request) {

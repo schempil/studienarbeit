@@ -43,3 +43,4 @@ Route::group(['middleware' => 'web'], function () {
 Route::resource('/device', 'DeviceController');
 Route::resource('/person', 'PersonController');
 Route::resource('/loan', 'LoanController');
+Route::resource('/log', 'LogController');

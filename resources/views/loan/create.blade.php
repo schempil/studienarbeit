@@ -31,12 +31,16 @@
                 <select class="select2 demo-default" placeholder="Gerät auswählen" name="device">
                     <option value="">Gerät auswählen</option>
                     @foreach($devices as $device)
-                        <option selected="selected" value="{{ $device->id }}">{{ $device->name }} ({{ $device->device_number }})</option>
+                        <option @if($device->id == $selectedDevice->id)
+                                    selected="selected"
+                                @endif
+                                value="{{ $device->id }}">{{ $device->name }} ({{ $device->device_number }})</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <input type="date" name="back"/>
+                <label>Rückgabe</label>
+                <input type="date" name="back" class="form-control" />
             </div>
             <div class="form-group">
                 <button class="btn btn-sm btn-default" type="submit">Speichern</button>

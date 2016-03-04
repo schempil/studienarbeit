@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use App\Log;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,7 +11,7 @@ use App\Http\Requests;
 class DeviceController extends Controller
 {
     public function index() {
-        $devices = Device::paginate(10);
+        $devices = Device::paginate(12);
 
         if(isset($_REQUEST['available'])) {
             if($_REQUEST['available'] == 1) {
@@ -22,6 +23,7 @@ class DeviceController extends Controller
         }
         return view('device.index', ['devices' => $devices]);
     }
+
 
     public function create() {
         return view('device.create');
@@ -37,6 +39,11 @@ class DeviceController extends Controller
         }
         $device->device_number = $request->device_number;
         $device->save();
+
+        $log = new Log();
+        $log->device_id = $device->id;
+        $log->type = 'create device';
+        $log->save();
 
         return redirect('/device');
     }

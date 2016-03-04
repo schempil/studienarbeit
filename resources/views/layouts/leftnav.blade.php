@@ -56,6 +56,7 @@
             </a>
             <ul>
                 <li><a href="/admin/roles">Rollenverteilung</a></li>
+                <li><a href="/log">Logs</a></li>
             </ul>
         </li>
     </ul>
