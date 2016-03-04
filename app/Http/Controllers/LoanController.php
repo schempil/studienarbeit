@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use App\Log;
 use App\Person;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class LoanController extends Controller
 {
@@ -22,10 +24,17 @@ class LoanController extends Controller
     }
 
     public function create() {
-        $selectedDevice = Device::findOrFail($_REQUEST['device']);
+        $selectedDevice = false;
+        if(isset($_REQUEST['device'])) {
+            $selectedDevice = Device::findOrFail($_REQUEST['device']);
+        }
+
         $devices = Device::where('available', '=', '1')->get();
         $people = Person::all();
-        return view('loan.create', ['devices' => $devices, 'people' => $people, 'selectedDevice' => $selectedDevice]);
+        if($selectedDevice) {
+            return view('loan.create', ['devices' => $devices, 'people' => $people, 'selectedDevice' => $selectedDevice]);
+        }
+        return view('loan.create', ['devices' => $devices, 'people' => $people]);
     }
 
     public function store(Request $request) {
@@ -34,6 +43,13 @@ class LoanController extends Controller
         $device->available = 0;
         $device->back = $request->back;
         $device->save();
+
+        $log = new Log();
+        $log->device_id = $device->id;
+        $log->person_id = $request->person;
+        $log->type = 'create loan';
+        $log->user_id = Auth::user()->id;
+        $log->save();
 
         return redirect('/loan');
     }

@@ -7,6 +7,7 @@ use App\Log;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class DeviceController extends Controller
 {
@@ -43,6 +44,7 @@ class DeviceController extends Controller
         $log = new Log();
         $log->device_id = $device->id;
         $log->type = 'create device';
+        $log->user_id = Auth::user()->id;
         $log->save();
 
         return redirect('/device');

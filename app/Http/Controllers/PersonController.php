@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
 use App\Person;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class PersonController extends Controller
 {
@@ -25,6 +27,12 @@ class PersonController extends Controller
         $person->class = $request->class;
 
         $person->save();
+
+        $log = new Log();
+        $log->person_id = $person->id;
+        $log->type = 'create person';
+        $log->user_id = Auth::user()->id;
+        $log->save();
 
         return redirect('/person');
     }

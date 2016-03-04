@@ -31,7 +31,7 @@
                 <select class="select2 demo-default" placeholder="Gerät auswählen" name="device">
                     <option value="">Gerät auswählen</option>
                     @foreach($devices as $device)
-                        <option @if($device->id == $selectedDevice->id)
+                        <option @if(isset($selectedDevice) && $device->id == $selectedDevice->id)
                                     selected="selected"
                                 @endif
                                 value="{{ $device->id }}">{{ $device->name }} ({{ $device->device_number }})</option>

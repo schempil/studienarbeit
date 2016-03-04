@@ -11,8 +11,6 @@
 @section('content')
 
     <div class="feed-box-profile">
-
-
         <div class="nano has-scrollbar">
             <div class="nano-content" tabindex="0" style="right: -17px;">
                 <div class="feed-box">
@@ -22,7 +20,14 @@
                             <span class="label label-light-green">
                                 <i class="fa fa-bar-chart-o"></i>
                             </span>
-                                {{ $log->type }}: {{ $log->device->name }}
+                                {{ $log->user->name }}
+                                {{ $log->type }}:
+                                @if(!$log->device_id == null)
+                                    {{ $log->device->name }}
+                                @endif
+                                @if(!$log->person_id == null)
+                                    {{ $log->person->name }}
+                                @endif
                                 <span class="date">{{ $log->created_at->diffForHumans() }}</span>
                             </li>
                         @endforeach

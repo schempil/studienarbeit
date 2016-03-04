@@ -30,17 +30,14 @@ Route::get('/fickle', function() {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::resource('/device', 'DeviceController');
+    Route::resource('/person', 'PersonController');
+    Route::resource('/loan', 'LoanController');
+    Route::resource('/log', 'LogController');
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
     Route::get('/home', 'HomeController@index');
 });
-
-Route::resource('/device', 'DeviceController');
-Route::resource('/person', 'PersonController');
-Route::resource('/loan', 'LoanController');
-Route::resource('/log', 'LogController');
