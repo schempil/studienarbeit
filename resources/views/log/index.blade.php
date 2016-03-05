@@ -17,16 +17,34 @@
                     <ul class="ls-feed">
                         @foreach($logs as $log)
                             <li>
-                            <span class="label label-light-green">
-                                <i class="fa fa-bar-chart-o"></i>
-                            </span>
+                                @if($log->type == 'create loan')
+                                    <span class="label label-red">
+                                        <i class="fa fa-upload"></i>
+                                    </span>
+                                @elseif($log->type == 'create device')
+                                    <span class="label label-blue">
+                                        <i class="fa fa-mobile"></i>
+                                    </span>
+                                @elseif($log->type == 'create person')
+                                    <span class="label label-green">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                @elseif($log->type == 'edit device')
+                                    <span class="label label-yellow">
+                                        <i class="fa fa-edit"></i>
+                                    </span>
+                                @endif
+
                                 {{ $log->user->name }}
                                 {{ $log->type }}:
                                 @if(!$log->device_id == null)
-                                    {{ $log->device->name }}
+                                    <a href="/device/{{ $log->device->id }}">{{ $log->device->name }}</a>
+                                @endif
+                                @if(!$log->device_id == null && !$log->person_id == null)
+                                    ->
                                 @endif
                                 @if(!$log->person_id == null)
-                                    {{ $log->person->name }}
+                                    <a href="/person/{{ $log->person->id }}">{{ $log->person->name }}</a>
                                 @endif
                                 <span class="date">{{ $log->created_at->diffForHumans() }}</span>
                             </li>

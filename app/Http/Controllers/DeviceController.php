@@ -49,4 +49,29 @@ class DeviceController extends Controller
 
         return redirect('/device');
     }
+
+    public function edit($id) {
+        $device = Device::findOrfail($id);
+        return view('device.edit', ['device' => $device]);
+    }
+
+    public function update(Request $request, $id) {
+        $device = Device::findOrFail($id);
+        $device->name = $request->name;
+        $device->description = $request->description;
+        $device->device_number = $request->device_number;
+        $device->available = false;
+        if($request->available) {
+            $device->available = true;
+        }
+        $device->save();
+
+        $log = new Log();
+        $log->device_id = $device->id;
+        $log->type = 'edit device';
+        $log->user_id = Auth::user()->id;
+        $log->save();
+
+        return redirect('/device');
+    }
 }
