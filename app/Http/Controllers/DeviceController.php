@@ -25,6 +25,11 @@ class DeviceController extends Controller
         return view('device.index', ['devices' => $devices]);
     }
 
+    public function show($id) {
+        $device = Device::findOrFail($id);
+        $logs = Log::where('device_id', '=', $device->id)->orderBy('created_at', 'desc')->get();
+        return view('device.show', ['device' => $device, 'logs' => $logs]);
+    }
 
     public function create() {
         return view('device.create');
@@ -73,5 +78,10 @@ class DeviceController extends Controller
         $log->save();
 
         return redirect('/device');
+    }
+
+    public function delete($id) {
+        $device = Device::findOrFail($id);
+        return view('device.delete', ['device' => $device]);
     }
 }

@@ -29,17 +29,12 @@
                                 {{ $device->name }}<br/>
                                 {{ $device->device_number }}<br/>
                                 {{ $device->description }}<br/>
-                                Verfügbar?
-                                @if($device->available)
-                                    <i class="green fa fa fa-check fa-2x"></i>
-                                @else
-                                    <i class="red fa fa fa-times fa-2x"></i>
-                                @endif
                                 <hr/>
                             </p>
                             <p class="text-center">
-                                <a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                                <a href="/device/{{ $device->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                 <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                <a href="/device/{{ $device->id }}/delete" class="btn btn-danger"><i class="fa fa-minus"></i></a>
                                 @if($device->available)
                                     <a href="/loan/create?device={{ $device->id }}" class="btn btn-success"><i class="fa fa-download"></i></a>
                                 @endif

@@ -52,7 +52,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="nano-pane" style="display: block; opacity: 1; visibility: visible;"><div class="nano-slider" style="height: 67px; transform: translate(0px, 0px);"></div></div></div>
+        <div class="nano-pane" style="display: block; opacity: 1; visibility: visible;"><div class="nano-slider" style="height: 67px; transform: translate(0px, 0px);"></div></div></div>
     </div>
 
 @endsection
