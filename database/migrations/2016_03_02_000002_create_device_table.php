@@ -20,6 +20,7 @@ class CreateDeviceTable extends Migration
             $table->boolean('available');
             $table->integer('lent_by')->unsigned()->nullable();
             $table->date('back')->nullable();
+            $table->boolean('active');
             $table->timestamps();
 
             $table->foreign('lent_by')->references('id')->on('people');

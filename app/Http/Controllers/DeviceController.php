@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class DeviceController extends Controller
 {
     public function index() {
-        $devices = Device::paginate(12);
+        $devices = Device::active()->paginate(12);
 
         if(isset($_REQUEST['available'])) {
             if($_REQUEST['available'] == 1) {
-                $devices = Device::where('available', '=', '1')->paginate(10);
+                $devices = Device::active()->where('available', '=', '1')->paginate(10);
             }
             if($_REQUEST['available'] == 0) {
-                $devices = Device::where('available', '=', '0')->paginate(10);
+                $devices = Device::active()->where('available', '=', '0')->paginate(10);
             }
         }
         return view('device.index', ['devices' => $devices]);
@@ -44,6 +44,7 @@ class DeviceController extends Controller
             $device->available = true;
         }
         $device->device_number = $request->device_number;
+        $device->active = true;
         $device->save();
 
         $log = new Log();
@@ -83,5 +84,21 @@ class DeviceController extends Controller
     public function delete($id) {
         $device = Device::findOrFail($id);
         return view('device.delete', ['device' => $device]);
+    }
+
+    public function destroy($id) {
+        $device = Device::findOrFail($id);
+        if($device->available) {
+            $device->active = false;
+            $device->save();
+        }
+
+        $log = new Log();
+        $log->device_id = $device->id;
+        $log->type = 'delete device';
+        $log->user_id = Auth::user()->id;
+        $log->save();
+
+        return redirect('/device');
     }
 }

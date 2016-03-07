@@ -27,4 +27,9 @@ class Device extends Model
         }
         return false;
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 }

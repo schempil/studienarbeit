@@ -33,6 +33,10 @@
                                     <span class="label label-yellow">
                                         <i class="fa fa-edit"></i>
                                     </span>
+                                @elseif($log->type == 'delete device')
+                                    <span class="label label-red">
+                                        <i class="fa fa-trash-o"></i>
+                                    </span>
                                 @endif
 
                                 {{ $log->user->name }}

@@ -29,7 +29,7 @@ class LoanController extends Controller
             $selectedDevice = Device::findOrFail($_REQUEST['device']);
         }
 
-        $devices = Device::where('available', '=', '1')->get();
+        $devices = Device::active()->where('available', '=', '1')->get();
         $people = Person::all();
         if($selectedDevice) {
             return view('loan.create', ['devices' => $devices, 'people' => $people, 'selectedDevice' => $selectedDevice]);
