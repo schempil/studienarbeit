@@ -58,6 +58,7 @@
                 <li><a href="/admin/roles">Rollenverteilung</a></li>
                 <li><a href="/admin/log">Logs</a></li>
                 <li><a href="/admin/restoredevices">Gelöschte Geräte</a></li>
+                <li><a href="/admin/category">Kategorien</a></li>
             </ul>
         </li>
     </ul>

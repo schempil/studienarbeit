@@ -39,6 +39,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('/admin/log', 'LogController');
     Route::get('/admin/restoredevices', 'DeviceController@restoreindex');
     Route::get('/admin/restoredevices/{device}', 'DeviceController@restoredevice');
+    Route::resource('/admin/category', 'CategoryController');
 });
 
 Route::group(['middleware' => 'web'], function () {
