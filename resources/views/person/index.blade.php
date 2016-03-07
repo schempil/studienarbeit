@@ -17,6 +17,7 @@
             <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>E-Mail</th>
                 <th>Matrikelnummer</th>
                 <th>Kurs</th>
                 <th class="text-center">Aktion</th>
@@ -27,6 +28,7 @@
                 <tr>
                     <td>{{ $person->id }}</td>
                     <td>{{ $person->name }}</td>
+                    <td>{{ $person->mail }}</td>
                     <td>{{ $person->matriculation }}</td>
                     <td>{{ $person->class }}</td>
                     <td class="text-center">

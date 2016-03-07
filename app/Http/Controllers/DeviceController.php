@@ -101,4 +101,21 @@ class DeviceController extends Controller
 
         return redirect('/device');
     }
+
+    public function restoreindex() {
+        $devices = Device::inactive()->paginate(16);
+        return view('admin.device.index', ['devices' => $devices]);
+    }
+
+    public function restoredevice($id) {
+        $device = Device::findOrFail($id);
+        $device->active = true;
+        $device->save();
+
+        $log = new Log();
+        $log->device_id = $device->id;
+        $log->type = 'restore device';
+        $log->user_id = Auth::user()->id;
+        $log->save();
+    }
 }

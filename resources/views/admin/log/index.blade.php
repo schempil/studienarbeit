@@ -5,6 +5,7 @@
 @endsection
 
 @section('breadcrumbs')
+    <li>Administration</li>
     <li>Logs</li>
 @endsection
 
@@ -36,6 +37,10 @@
                                 @elseif($log->type == 'delete device')
                                     <span class="label label-red">
                                         <i class="fa fa-trash-o"></i>
+                                    </span>
+                                @elseif($log->type == 'restore device')
+                                    <span class="label label-light-green">
+                                        <i class="fa fa-refresh"></i>
                                     </span>
                                 @endif
 

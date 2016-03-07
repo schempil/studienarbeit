@@ -10,9 +10,6 @@
 @endsection
 
 @section('content')
-
-
-
         <div class="col-md-12">
             @foreach($devices as $device)
                 <div class="col-md-3">
@@ -43,8 +40,6 @@
                     </div>
                 </div>
             @endforeach
-
             {!! $devices->links() !!}
         </div>
-
 @endsection

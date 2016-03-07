@@ -31,8 +31,11 @@
                     <p class="text-center">
                         <a href="/device/{{ $device->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                         <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                        @if($device->available)
+                        <a href="/device/{{ $device->id }}/delete" class="btn btn-danger"><i class="fa fa-minus"></i></a>
+                        @if($device->available && $device->active)
                             <a href="/loan/create?device={{ $device->id }}" class="btn btn-success"><i class="fa fa-download"></i></a>
+                        @elseif(!$device->active)
+                            <a href="/admin/restoredevices/{{ $device->id }}" class="btn btn-success"><i class="fa fa-refresh"></i></a>
                         @endif
                     </p>
                 </div>

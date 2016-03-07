@@ -23,6 +23,7 @@ class PersonController extends Controller
     public function store(Request $request) {
         $person = new Person();
         $person->name = $request->name;
+        $person->mail = $request->mail;
         $person->matriculation = $request->matriculation;
         $person->class = $request->class;
 

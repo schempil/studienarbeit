@@ -18,6 +18,10 @@
             <input type="text" placeholder="Name des Studenten" class="form-control" name="name">
         </div>
         <div class="form-group">
+            <label>E-Mail</label>
+            <input type="email" placeholder="E-Mail des Studenten" class="form-control" name="mail">
+        </div>
+        <div class="form-group">
             <label>Matrikelnummer</label>
             <input type="number" placeholder="Matrikelnummer" class="form-control" name="matriculation">
         </div>

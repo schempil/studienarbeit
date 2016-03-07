@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+ Route::get('/', function () {
     return view('welcome');
 });
 
@@ -35,7 +35,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/device/{device}/delete', 'DeviceController@delete');
     Route::resource('/person', 'PersonController');
     Route::resource('/loan', 'LoanController');
-    Route::resource('/log', 'LogController');
+
+    Route::resource('/admin/log', 'LogController');
+    Route::get('/admin/restoredevices', 'DeviceController@restoreindex');
+    Route::get('/admin/restoredevices/{device}', 'DeviceController@restoredevice');
 });
 
 Route::group(['middleware' => 'web'], function () {
