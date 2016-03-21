@@ -37,4 +37,10 @@ class PersonController extends Controller
 
         return redirect('/person');
     }
+
+    public function show($id) {
+        $person = Person::findOrFail($id);
+        $logs = Log::where('person_id', '=', $person->id)->orderBy('created_at', 'desc')->get();
+        return view('person.show', ['person' => $person, 'logs' => $logs]);
+    }
 }
