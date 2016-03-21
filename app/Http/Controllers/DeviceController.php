@@ -61,13 +61,15 @@ class DeviceController extends Controller
 
     public function edit($id) {
         $device = Device::findOrfail($id);
-        return view('device.edit', ['device' => $device]);
+        $categories = Category::all();
+        return view('device.edit', ['device' => $device, 'categories' => $categories]);
     }
 
     public function update(Request $request, $id) {
         $device = Device::findOrFail($id);
         $device->name = $request->name;
         $device->description = $request->description;
+        $device->category = $request->category;
         $device->device_number = $request->device_number;
         $device->available = false;
         if($request->available) {
@@ -81,7 +83,7 @@ class DeviceController extends Controller
         $log->user_id = Auth::user()->id;
         $log->save();
 
-        return redirect('/device');
+        return redirect('/device')->with('message', 'Geräte wurde erfolgreich bearbeitet.');
     }
 
     public function delete($id) {
@@ -102,7 +104,7 @@ class DeviceController extends Controller
         $log->user_id = Auth::user()->id;
         $log->save();
 
-        return redirect('/device');
+        return redirect('/device')->with('message', 'Geräte wurde erfolgreich gelöscht');
     }
 
     public function restoreindex() {
@@ -120,5 +122,7 @@ class DeviceController extends Controller
         $log->type = 'restore device';
         $log->user_id = Auth::user()->id;
         $log->save();
+
+        return redirect('/admin/restoredevices')->with('message', 'Gerät wurde erfolgreich wiederhergestellt.');
     }
 }

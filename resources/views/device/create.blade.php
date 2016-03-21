@@ -17,8 +17,6 @@
             <label>Name</label>
             <input type="text" placeholder="Gerätebezeichnung" class="form-control" name="name">
         </div>
-
-
         <div class="form-group">
             <label>Kategorie</label>
             <div class="control-group">
@@ -30,7 +28,6 @@
                 </select>
             </div>
         </div>
-
         <div class="form-group">
             <label>Beschreibung</label>
             <textarea class="animatedTextArea form-control " name="description" placeholder="Kurze Beschreibung / Zusatzinformationen" style="word-wrap: break-word; resize: vertical; height: 154px;"></textarea>

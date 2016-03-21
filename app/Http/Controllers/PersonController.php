@@ -35,7 +35,7 @@ class PersonController extends Controller
         $log->user_id = Auth::user()->id;
         $log->save();
 
-        return redirect('/person');
+        return redirect('/person')->with('message', 'Person wurde erfolgreich hinzugefügt.');
     }
 
     public function show($id) {

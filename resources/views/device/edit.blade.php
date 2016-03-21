@@ -24,6 +24,23 @@
             <textarea  class="animatedTextArea form-control " name="description" placeholder="Kurze Beschreibung / Zusatzinformationen" style="word-wrap: break-word; resize: vertical; height: 154px;">{{ $device->description }}</textarea>
         </div>
         <div class="form-group">
+            <label>Kategorie</label>
+            <div class="control-group">
+                <select class="select2 demo-default" placeholder="Kategorie auswählen" name="category">
+                    <option value="">Kategorie auswählen</option>
+                    @foreach($categories as $category)
+                        <option
+
+                                @if($category->id == $device->category)
+                                    selected="selected"
+                                @endif
+
+                                value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <labe>Gerätenummer</labe>
             <input type="text" placeholder="Gerätenummer" class="form-control" name="device_number" value="{{ $device->device_number }}">
         </div>

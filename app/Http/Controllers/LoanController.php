@@ -51,7 +51,7 @@ class LoanController extends Controller
         $log->user_id = Auth::user()->id;
         $log->save();
 
-        return redirect('/loan');
+        return redirect('/loan')->with('message', 'Leihgabe erfolgreich eingetragen.');
     }
 
     public function show($id) {
