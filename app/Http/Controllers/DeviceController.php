@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Device;
 use App\Log;
 use Illuminate\Http\Request;
@@ -32,13 +33,15 @@ class DeviceController extends Controller
     }
 
     public function create() {
-        return view('device.create');
+        $categories = Category::all();
+        return view('device.create', ['categories' => $categories]);
     }
 
     public function store(Request $request) {
         $device = new Device();
         $device->name = $request->name;
         $device->description = $request->description;
+        $device->category = $request->category;
         $device->available = false;
         if($request->available) {
             $device->available = true;
@@ -53,7 +56,7 @@ class DeviceController extends Controller
         $log->user_id = Auth::user()->id;
         $log->save();
 
-        return redirect('/device');
+        return redirect('/device')->with('message', 'Geräte wurde erfolgreich hinzugefügt');
     }
 
     public function edit($id) {

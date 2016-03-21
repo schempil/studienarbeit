@@ -21,28 +21,28 @@
                             <li>
                                 @if($log->type == 'create loan')
                                     <span class="label label-red">
-                                                <i class="fa fa-upload"></i>
-                                            </span>
+                                        <i class="fa fa-upload"></i>
+                                    </span>
                                 @elseif($log->type == 'create device')
                                     <span class="label label-blue">
-                                                <i class="fa fa-mobile"></i>
-                                            </span>
+                                        <i class="fa fa-mobile"></i>
+                                    </span>
                                 @elseif($log->type == 'create person')
                                     <span class="label label-green">
-                                                <i class="fa fa-user"></i>
-                                            </span>
+                                        <i class="fa fa-user"></i>
+                                    </span>
                                 @elseif($log->type == 'edit device')
                                     <span class="label label-yellow">
-                                                <i class="fa fa-edit"></i>
-                                            </span>
+                                        <i class="fa fa-edit"></i>
+                                    </span>
                                 @elseif($log->type == 'delete device')
                                     <span class="label label-red">
-                                                <i class="fa fa-trash-o"></i>
-                                            </span>
+                                        <i class="fa fa-trash-o"></i>
+                                    </span>
                                 @elseif($log->type == 'restore device')
                                     <span class="label label-light-green">
-                                                <i class="fa fa-refresh"></i>
-                                            </span>
+                                        <i class="fa fa-refresh"></i>
+                                    </span>
                                 @endif
 
                                 {{ $log->user->name }}

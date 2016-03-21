@@ -17,6 +17,20 @@
             <label>Name</label>
             <input type="text" placeholder="Gerätebezeichnung" class="form-control" name="name">
         </div>
+
+
+        <div class="form-group">
+            <label>Kategorie</label>
+            <div class="control-group">
+                <select class="select2 demo-default" placeholder="Kategorie auswählen" name="category">
+                    <option value="">Kategorie auswählen</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
         <div class="form-group">
             <label>Beschreibung</label>
             <textarea class="animatedTextArea form-control " name="description" placeholder="Kurze Beschreibung / Zusatzinformationen" style="word-wrap: break-word; resize: vertical; height: 154px;"></textarea>

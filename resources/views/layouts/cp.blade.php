@@ -43,6 +43,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
+                                @include('layouts.messages')
                                 <h3 class="ls-top-header">@yield('title')</h3>
                                 <ol class="breadcrumb">
                                     <li><a href="javascript:void(0)"><i class="fa fa-home"></i></a></li>
