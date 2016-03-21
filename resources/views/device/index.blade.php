@@ -19,17 +19,15 @@
                                             panel-danger
                                         @endif">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{{ $device->id }}: {{ $device->name }}</h3>
+                            <h3 class="panel-title"><a href="/device/{{ $device->id }}" >{{ $device->id }}: {{ $device->name }}</a></h3>
                         </div>
                         <div class="panel-body">
                             <p>
                                 {{ $device->name }}<br/>
-                                {{ $device->device_number }}<br/>
-                                {{ $device->description }}<br/>
+                                {{ $device->device_number }}
                                 <hr/>
                             </p>
                             <p class="text-center">
-                                <a href="/device/{{ $device->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                 <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                 <a href="/device/{{ $device->id }}/delete" class="btn btn-danger"><i class="fa fa-minus"></i></a>
                                 @if($device->available)
@@ -40,6 +38,9 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="col-md-12">
             {!! $devices->links() !!}
         </div>
+
 @endsection
