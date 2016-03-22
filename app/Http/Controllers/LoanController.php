@@ -38,6 +38,13 @@ class LoanController extends Controller
     }
 
     public function store(Request $request) {
+
+        $this->validate($request, [
+            'person' => 'required',
+            'device' => 'required',
+            'back' => 'required'
+        ]);
+
         $device = Device::findOrFail($request->device);
         $device->lent_by = $request->person;
         $device->available = 0;

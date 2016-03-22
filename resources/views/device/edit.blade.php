@@ -21,7 +21,9 @@
         </div>
         <div class="form-group">
             <label>Beschreibung</label>
-            <textarea  class="animatedTextArea form-control " name="description" placeholder="Kurze Beschreibung / Zusatzinformationen" style="word-wrap: break-word; resize: vertical; height: 154px;">{{ $device->description }}</textarea>
+            <textarea  class="animatedTextArea form-control " name="description" placeholder="Kurze Beschreibung / Zusatzinformationen" style="word-wrap: break-word; resize: vertical; height: 154px;">
+                {{ $device->description }}
+            </textarea>
         </div>
         <div class="form-group">
             <label>Kategorie</label>

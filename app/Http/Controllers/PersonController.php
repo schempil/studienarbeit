@@ -21,6 +21,14 @@ class PersonController extends Controller
     }
 
     public function store(Request $request) {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'mail' => 'required',
+            'matriculation' => 'required',
+            'class' => 'required'
+        ]);
+
         $person = new Person();
         $person->name = $request->name;
         $person->mail = $request->mail;

@@ -38,6 +38,14 @@ class DeviceController extends Controller
     }
 
     public function store(Request $request) {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'category' => 'required',
+            'device_number' => 'required',
+            'available' => 'required'
+        ]);
+
         $device = new Device();
         $device->name = $request->name;
         $device->description = $request->description;
@@ -66,6 +74,14 @@ class DeviceController extends Controller
     }
 
     public function update(Request $request, $id) {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'category' => 'required',
+            'device_number' => 'required',
+            'available' => 'required'
+        ]);
+
         $device = Device::findOrFail($id);
         $device->name = $request->name;
         $device->description = $request->description;
