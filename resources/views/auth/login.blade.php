@@ -73,6 +73,8 @@
                         <h3>Resourcemanager</h3>
                     </div>
 
+                    @include('layouts.messages')
+
                     <div class="login-form">
                         <form class="form-horizontal ls_form" role="form" method="POST" action="{{ url('/login') }}">
                             {!! csrf_field() !!}

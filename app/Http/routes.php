@@ -15,10 +15,6 @@
     return view('welcome');
 });
 
-Route::get('/fickle', function() {
-    return view('fickle');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
