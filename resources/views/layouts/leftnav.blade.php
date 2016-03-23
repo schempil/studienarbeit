@@ -47,7 +47,6 @@
                 <li><a href="/loan">Übersicht</a></li>
                 <li><a href="/loan/create">Hinzufügen</a></li>
                 <li><a href="/loan?delayed">Verspätet</a></li>
-                <li><a href="#">Ausleihbogen</a></li>
             </ul>
         </li>
         <li>

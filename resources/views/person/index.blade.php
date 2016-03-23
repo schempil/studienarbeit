@@ -32,9 +32,7 @@
                     <td>{{ $person->matriculation }}</td>
                     <td>{{ $person->class }}</td>
                     <td class="text-center">
-                        <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
-                        <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
-                        <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
+
                     </td>
                 </tr>
             @endforeach
