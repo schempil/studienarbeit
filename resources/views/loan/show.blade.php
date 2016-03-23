@@ -11,5 +11,5 @@
 @endsection
 
 @section('content')
-
+    <img src="{{ $device->proposal }}" class="img-responsive">
 @endsection

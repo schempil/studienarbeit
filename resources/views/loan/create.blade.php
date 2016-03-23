@@ -43,6 +43,10 @@
                 <input type="date" name="back" class="form-control" />
             </div>
             <div class="form-group">
+                <label>Verwendungszweck</label>
+                <input type="text" name="reasons" class="form-control" />
+            </div>
+            <div class="form-group">
                 <button class="btn btn-sm btn-default" type="submit">Speichern</button>
             </div>
         </div>

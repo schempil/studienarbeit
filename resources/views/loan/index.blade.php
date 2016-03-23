@@ -35,7 +35,12 @@
                             {{ $device->person->name }}
                         </td>
                         <td @if($device->delayed())style="background-color: #ff7878; color: white;"@endif>
-                            {{ $device->back->toFormattedDateString() }}
+                            @if(!$device->back == null)
+                                {{ $device->back->toFormattedDateString() }}
+                            @else
+                                Nicht bekannt
+                            @endif
+
                         </td>
                         <td @if($device->delayed())style="background-color: #ff7878; color: white;"@endif class="text-center">
                             <a href="/loan/{{ $device->id }}" class="btn btn-xs btn-default"><i class="fa fa-eye fa-2x"></i></a>
