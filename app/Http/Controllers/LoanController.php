@@ -79,10 +79,7 @@ class LoanController extends Controller
 
         $device->proposal = $proposal;
 
-
         $device->save();
-
-
 
         return redirect('/loan')->with('message', 'Leihgabe erfolgreich eingetragen.');
     }

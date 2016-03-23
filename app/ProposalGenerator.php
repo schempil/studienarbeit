@@ -45,7 +45,7 @@ class ProposalGenerator {
         });
 
         $rndm = str_random(20);
-        $img->save(public_path('proposals/  ' . $rndm . '.jpg'));
+        $img->save(public_path('proposals/' . $rndm . '.jpg'));
 
         return '/proposals/' . $rndm . '.jpg';
     }
