@@ -12,6 +12,8 @@
 */
 
 
+use App\ProposalGenerator;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,6 +28,10 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+
+Route::get('/aus', function() {
+    return '<img src="' . ProposalGenerator::aussonderung() . '">';
+});
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('/device', 'DeviceController');

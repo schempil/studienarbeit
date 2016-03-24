@@ -14,11 +14,16 @@ class Device extends Model
     ];
 
     protected $dates = [
-        'back'
+        'back',
+        'billdate'
     ];
 
     public function person() {
         return $this->belongsTo(Person::class, 'lent_by');
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 
     public function delayed() {

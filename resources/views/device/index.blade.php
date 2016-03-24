@@ -28,10 +28,11 @@
                                 <hr/>
                             </p>
                             <p class="text-center">
-                                <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                <a href="/device/{{ $device->id }}/delete" class="btn btn-danger"><i class="fa fa-minus"></i></a>
+                                    <a href="/device/{{ $device->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                 @if($device->available)
-                                    <a href="/loan/create?device={{ $device->id }}" class="btn btn-success"><i class="fa fa-download"></i></a>
+                                    <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    <a href="/loan/create?device={{ $device->id }}" class="btn btn-success"><i class="fa fa-upload"></i></a>
+                                    <a href="/device/{{ $device->id }}/delete" class="btn btn-danger"><i class="fa fa-minus"></i></a>
                                 @endif
                             </p>
                         </div>

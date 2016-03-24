@@ -22,18 +22,82 @@
                     <h3 class="panel-title">{{ $device->id }}: {{ $device->name }}</h3>
                 </div>
                 <div class="panel-body">
-                    <p>
-                        {{ $device->name }}<br/>
-                        {{ $device->device_number }}<br/>
-                        {{ $device->description }}<br/>
-                        <hr/>
-                    </p>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Hersteller
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{ $device->supplier }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Name
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{ $device->name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Gerätenummer
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{ $device->device_number }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Kategorie
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{ $device->category->name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Inventar-Nr.
+                        </div>
+                        <div class="col-xs-6 col-md-9">
+                            {{ $device->inventory }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Standort
+                        </div>
+                        <div class="col-xs-6 col-md-9">
+                            {{ $device->location }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Volumen
+                        </div>
+                        <div class="col-xs-6 col-md-9">
+                            {{ $device->volume }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Rechnungsdatum
+                        </div>
+                        <div class="col-xs-6 col-md-9">
+                            {{ $device->billdate->toFormattedDateString() }}
+                        </div>
+                    </div><hr>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            {{ $device->description }}
+                        </div>
+                    </div>
+
                     <p class="text-center">
-                        <a href="/device/{{ $device->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
-                        <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                        <a href="/device/{{ $device->id }}/delete" class="btn btn-danger"><i class="fa fa-minus"></i></a>
                         @if($device->available && $device->active)
-                            <a href="/loan/create?device={{ $device->id }}" class="btn btn-success"><i class="fa fa-download"></i></a>
+                            <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="/loan/create?device={{ $device->id }}" class="btn btn-success"><i class="fa fa-upload"></i></a>
+                            <a href="/device/{{ $device->id }}/delete" class="btn btn-danger"><i class="fa fa-minus"></i></a>
                         @elseif(!$device->active)
                             <a href="/admin/restoredevices/{{ $device->id }}" class="btn btn-success"><i class="fa fa-refresh"></i></a>
                         @endif
@@ -42,7 +106,6 @@
             </div>
         </div>
         <div class="col-md-8">
-
             <div class="feed-box-profile">
                 <div class="nano has-scrollbar">
                     <div class="nano-content" tabindex="0" style="right: -17px;">
@@ -95,8 +158,16 @@
                     </div>
                     <div class="nano-pane" style="display: block; opacity: 1; visibility: visible;"><div class="nano-slider" style="height: 67px; transform: translate(0px, 0px);"></div></div></div>
             </div>
-
         </div>
     </div>
+    @if($device->proposal)
+        <div class="row" style="text-align: center;">
+            <div class="col-md-2">
+                <h2>Leihschein</h2>
+                <a href="{{ $device->proposal }}" target="_blank"><img src="{{ $device->proposal }}" class="img-responsive center-block" style="max-width: 160px;"></a>
+            </div>
+        </div>
+
+    @endif
 
 @endsection

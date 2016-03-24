@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Device;
 use App\Log;
+use App\ProposalGenerator;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -43,18 +44,29 @@ class DeviceController extends Controller
             'name' => 'required',
             'category' => 'required',
             'device_number' => 'required',
+            'supplier' => 'required',
+            'inventory' => 'required',
+            'location' => 'required',
             'available' => 'required'
         ]);
 
         $device = new Device();
         $device->name = $request->name;
         $device->description = $request->description;
-        $device->category = $request->category;
+        $device->category_id = $request->category;
         $device->available = false;
         if($request->available) {
             $device->available = true;
         }
         $device->device_number = $request->device_number;
+
+        $device->inventory = $request->inventory;
+        $device->supplier = $request->supplier;
+        $device->location = $request->location;
+
+        $device->volume = $request->volume;
+        $device->billdate = $request->billdate;
+
         $device->active = true;
         $device->save();
 
@@ -109,6 +121,18 @@ class DeviceController extends Controller
 
     public function destroy($id) {
         $device = Device::findOrFail($id);
+
+        return '<img src="' . ProposalGenerator::aussonderung(
+            'Informatik',
+            $device->name,
+            $device->inventory,
+            $device->supplier,
+            $device->location,
+            $device->volume,
+            $device->billdate,
+            $device->device_number
+        ) . '">';
+
         if($device->available) {
             $device->active = false;
             $device->save();
@@ -120,7 +144,7 @@ class DeviceController extends Controller
         $log->user_id = Auth::user()->id;
         $log->save();
 
-        return redirect('/device')->with('message', 'Geräte wurde erfolgreich gelöscht');
+        return redirect('/device')->with('message', 'Geräte wurde erfolgreich entfernt');
     }
 
     public function restoreindex() {

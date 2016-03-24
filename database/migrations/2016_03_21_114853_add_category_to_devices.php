@@ -14,8 +14,8 @@ class AddCategoryToDevices extends Migration
     {
         Schema::table('devices', function($table)
         {
-            $table->integer('category')->unsigned();
-            $table->foreign('category')->references('id')->on('categories');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -27,8 +27,8 @@ class AddCategoryToDevices extends Migration
     public function down()
     {
         Schema::table('devices', function($table) {
-            $table->dropForeign('devices_category_foreign');
-            $table->dropColumn('category');
+            $table->dropForeign('devices_category_id_foreign');
+            $table->dropColumn('category_id');
         });
     }
 }

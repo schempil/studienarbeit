@@ -27,7 +27,6 @@
                 <li><a href="/device/create">Hinzufügen</a></li>
                 <li><a href="/device?available=0">Verliehen</a></li>
                 <li><a href="/device?available=1">Verfügbar</a></li>
-                <li><a href="/device/cull">Aussonderung</a></li>
             </ul>
         </li>
         <li>
