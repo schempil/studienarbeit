@@ -97,7 +97,7 @@ class DeviceController extends Controller
         $device = Device::findOrFail($id);
         $device->name = $request->name;
         $device->description = $request->description;
-        $device->category = $request->category;
+        $device->category_id = $request->category;
         $device->device_number = $request->device_number;
         $device->available = false;
         if($request->available) {

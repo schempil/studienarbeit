@@ -45,9 +45,9 @@ class ProposalGenerator {
         });
 
         $rndm = str_random(20);
-        $img->save(public_path('proposals/' . $rndm . '.jpg'));
+        $img->save(public_path('proposals/loan/' . $rndm . '.jpg'));
 
-        return '/proposals/' . $rndm . '.jpg';
+        return '/proposals/loan/' . $rndm . '.jpg';
     }
 
     public static function aussonderung($studiengang, $devname, $inventory, $supplier, $location, $devnumber, $volume, $billdate) {
@@ -100,9 +100,9 @@ class ProposalGenerator {
 
         $rndm = str_random(20);
 
-        $img->save(public_path('proposals/out/' . $rndm . '.jpg'));
+        $img->save(public_path('proposals/segregation/' . $rndm . '.jpg'));
 
-        return '/proposals/out/'. $rndm . '.jpg';
+        return '/proposals/segregation/'. $rndm . '.jpg';
     }
 
 }

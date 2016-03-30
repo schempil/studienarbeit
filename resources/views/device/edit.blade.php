@@ -33,7 +33,7 @@
                     @foreach($categories as $category)
                         <option
 
-                                @if($category->id == $device->category)
+                                @if($category->id == $device->category->id)
                                     selected="selected"
                                 @endif
 

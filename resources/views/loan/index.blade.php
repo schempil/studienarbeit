@@ -42,8 +42,8 @@
                             @endif
                         </td>
                         <td class="text-center">
-                            <a href="/loan/{{ $device->id }}" class="btn btn-xs btn-default"><i class="fa fa-eye fa-2x"></i></a>
-                            <a href="/loan/{{ $device->id }}/return" class="btn btn-xs btn-success"><i class="fa fa-download fa-2x"></i></a>
+                            <a href="/loan/{{ $device->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                            <a href="/loan/{{ $device->id }}/return" class="btn btn-success"><i class="fa fa-download"></i></a>
                         </td>
                     </tr>
                 @endforeach

@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="/assets/css/plugins/selectize.bootstrap3.css">
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/css/responsive.css" rel="stylesheet">
+    <link href="/assets/css/css.css" rel="stylesheet">
+
+
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
