@@ -18,7 +18,7 @@ class DevicesTableSeeder extends Seeder
                 'device_number' => str_random(15),
                 'available' => true,
                 'active' => true,
-                'category' => 1
+                'category_id' => 1
             ]);
         }
     }
