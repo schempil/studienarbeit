@@ -10,60 +10,65 @@
 @endsection
 
 @section('content')
-
-
-    <div class="feed-box-profile">
-        <div class="nano has-scrollbar">
-            <div class="nano-content" tabindex="0" style="right: -17px;">
-                <div class="feed-box">
-                    <ul class="ls-feed">
-                        @foreach($logs as $log)
-                            <li>
-                                @if($log->type == 'create loan')
-                                    <span class="label label-red">
-                                        <i class="fa fa-upload"></i>
-                                    </span>
-                                @elseif($log->type == 'create device')
-                                    <span class="label label-blue">
-                                        <i class="fa fa-mobile"></i>
-                                    </span>
-                                @elseif($log->type == 'create person')
-                                    <span class="label label-green">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                @elseif($log->type == 'edit device')
-                                    <span class="label label-yellow">
-                                        <i class="fa fa-edit"></i>
-                                    </span>
-                                @elseif($log->type == 'delete device')
-                                    <span class="label label-red">
-                                        <i class="fa fa-trash-o"></i>
-                                    </span>
-                                @elseif($log->type == 'restore device')
-                                    <span class="label label-light-green">
-                                        <i class="fa fa-refresh"></i>
-                                    </span>
-                                @endif
-
-                                {{ $log->user->name }}
-                                {{ $log->type }}:
-                                @if(!$log->device_id == null)
-                                    <a href="/device/{{ $log->device->id }}">{{ $log->device->name }}</a>
-                                @endif
-                                @if(!$log->device_id == null && !$log->person_id == null)
-                                    ->
-                                @endif
-                                @if(!$log->person_id == null)
-                                    <a href="/person/{{ $log->person->id }}">{{ $log->person->name }}</a>
-                                @endif
-                                <span class="date">{{ $log->created_at->diffForHumans() }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ $person->id }}: {{ $person->name }}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Name
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{ $person->name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            E-Mail
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            <a href="mailto:{{ $person->mail }}">{{ $person->mail }}</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Matrikelnummer
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{ $person->matriculation }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            Kurs
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{ $person->class }}
+                        </div>
+                    </div>
+                    <hr>
                 </div>
             </div>
-            <div class="nano-pane" style="display: block; opacity: 1; visibility: visible;"><div class="nano-slider" style="height: 67px; transform: translate(0px, 0px);"></div></div></div>
-    </div>
+        </div>
+        <div class="col-md-8">
+            <h3>Geliehene Geräte</h3>
+            @foreach($person->devices as $device)
+                <a href="/device/{{ $device->id }}">
 
+                <div class="col-md-4 col-sm-12">
+                    <div class="ls-wizard @if($device->delayed()) label-red @else label-light-green @endif">
+                        <h2>{{ $device->name }}</h2>
+                        <span>Rückgabe {{ $device->back->diffForHumans() }}</span>
+                    </div>
+                </div>
+
+                </a>
+
+            @endforeach
+        </div>
+    </div>
 
 @endsection

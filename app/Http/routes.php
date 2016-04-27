@@ -12,7 +12,6 @@
 */
 
 
-use App\ProposalGenerator;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,15 +28,13 @@ Route::get('/', function () {
 |
 */
 
-Route::get('/aus', function() {
-    return '<img src="' . ProposalGenerator::aussonderung() . '">';
-});
-
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('/device', 'DeviceController');
         Route::get('/device/{device}/delete', 'DeviceController@delete');
     Route::resource('/person', 'PersonController');
     Route::resource('/loan', 'LoanController');
+        Route::get('/loan/{loan}/return', 'LoanController@loanreturn');
+        Route::post('/loan/{loan}/return', 'LoanController@savereturn');
 
     Route::resource('/admin/log', 'LogController');
     Route::get('/admin/restoredevices', 'DeviceController@restoreindex');

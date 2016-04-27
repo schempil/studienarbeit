@@ -51,4 +51,20 @@ class PersonController extends Controller
         $logs = Log::where('person_id', '=', $person->id)->orderBy('created_at', 'desc')->get();
         return view('person.show', ['person' => $person, 'logs' => $logs]);
     }
+
+    public function edit($id) {
+        $person = Person::findOrFail($id);
+        return view ('person.edit', ['person' => $person]);
+    }
+
+    public function update($id, Request $request) {
+        $person = Person::findOrFail($id);
+        $person->name = $request->name;
+        $person->mail = $request->mail;
+        $person->matriculation = $request->matriculation;
+        $person->class = $request->class;
+        $person->save();
+
+        return redirect('/person')->with('message', 'Person wurde erfolgreich bearbeitet.');
+    }
 }

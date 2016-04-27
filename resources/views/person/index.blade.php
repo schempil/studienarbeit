@@ -1,7 +1,7 @@
 @extends('layouts.cp')
 
 @section('title')
-    Personenübersicht
+    Personenübersicht <a href="/person/create" class="btn btn-default"><i class="fa fa-plus"></i></a>
 @endsection
 
 @section('breadcrumbs')
@@ -32,7 +32,8 @@
                     <td>{{ $person->matriculation }}</td>
                     <td>{{ $person->class }}</td>
                     <td class="text-center">
-
+                        <a href="/person/{{ $person->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                        <a href="/person/{{ $person->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                     </td>
                 </tr>
             @endforeach

@@ -88,4 +88,22 @@ class LoanController extends Controller
         $device = Device::findOrFail($id);
         return view('loan.show', ['device' => $device]);
     }
+
+    public function loanreturn($id) {
+        $device = Device::findOrFail($id);
+        $person = Person::findOrFail($device->lent_by);
+        return view('loan.return', ['device' => $device, 'person' => $person]);
+    }
+
+    public function savereturn($id) {
+        $device = Device::findOrFail($id);
+        $device->available = 1;
+        $device->lent_by = null;
+        $device->back = null;
+        $device->reasons = null;
+        $device->proposal = null;
+        $device->save();
+
+        return redirect('/loan')->with('message', 'Leihgabe erfolgreich zurückgebracht.');
+    }
 }

@@ -1,19 +1,21 @@
 @extends('layouts.cp')
 
 @section('title')
-    Geräte wiederherstellen
+    Ausgesonderte Geräte
 @endsection
 
 @section('breadcrumbs')
     <li>Admin</li>
-    <li>Gerätewiederherstellung</li>
+    <li>Ausgesonderte Geräte</li>
 @endsection
 
 @section('content')
     <div class="col-md-12">
         @foreach($devices as $device)
             <div class="col-md-3">
-                <div class="panel @if($device->available)
+                <div class="panel @if(!$device->active)
+                        panel-default
+                    @elseif($device->available)
                         panel-success
                     @else
                         panel-danger
@@ -30,7 +32,6 @@
                         </p>
                         <p class="text-center">
                             <a href="/device/{{ $device->id }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
-                            <a href="/device/{{ $device->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                             <a href="/admin/restoredevices/{{ $device->id }}" class="btn btn-success"><i class="fa fa-refresh"></i></a>
                         </p>
                     </div>

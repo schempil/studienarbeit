@@ -13,6 +13,6 @@ class Person extends Model
     ];
 
     public function devices() {
-        $this->hasMany(Device::class);
+        return $this->hasMany(Device::class, 'lent_by');
     }
 }

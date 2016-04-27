@@ -1,7 +1,7 @@
 @extends('layouts.cp')
 
 @section('title')
-    Leihgaben
+    Leihgaben <a href="/loan/create" class="btn btn-default"><i class="fa fa-plus"></i></a>
 @endsection
 
 @section('breadcrumbs')
@@ -32,7 +32,7 @@
                             {{ $device->name }}
                         </td>
                         <td>
-                            {{ $device->person->name }}
+                            <a href="/person/{{ $device->person->id }}">{{ $device->person->name }}</a>
                         </td>
                         <td>
                             @if(!$device->back == null)

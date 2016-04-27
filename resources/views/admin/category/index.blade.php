@@ -11,12 +11,32 @@
 @endsection
 
 @section('content')
-    <table>
-        @foreach($categories as $category)
+
+    <div class="table-responsive ls-table">
+        <table class="table table-bordered table-striped">
+            <thead>
             <tr>
-                <td>{{ $category->name }}</td>
-                <td>{{ $category->description }}</td>
+                <th>Kategorie</th>
+                <th>Beschreibung</th>
+                <th class="text-center">Aktion</th>
             </tr>
-        @endforeach
-    </table>
+            </thead>
+            <tbody>
+            @foreach($categories as $category)
+                <tr>
+                    <td>
+                        {{ $category->name }}
+                    </td>
+                    <td>
+                        {{ $category->description }}
+                    </td>
+                    <td class="text-center">
+                        <a href="/admin/category/{{ $category->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
 @endsection

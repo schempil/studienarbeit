@@ -13,7 +13,9 @@
 
     <div class="row">
         <div class="col-md-4">
-            <div class="panel @if($device->available)
+            <div class="panel @if(!$device->active)
+                    panel-default
+                @elseif($device->available)
                     panel-success
                 @else
                     panel-danger
@@ -163,11 +165,10 @@
     @if($device->proposal)
         <div class="row" style="text-align: center;">
             <div class="col-md-2">
-                <h2>Leihschein</h2>
+                <h2>Formular</h2>
                 <a href="{{ $device->proposal }}" target="_blank"><img src="{{ $device->proposal }}" class="img-responsive center-block" style="max-width: 160px;"></a>
             </div>
         </div>
-
     @endif
 
 @endsection

@@ -122,16 +122,16 @@ class DeviceController extends Controller
     public function destroy($id) {
         $device = Device::findOrFail($id);
 
-        return '<img src="' . ProposalGenerator::aussonderung(
+        $device->proposal = ProposalGenerator::aussonderung(
             'Informatik',
             $device->name,
             $device->inventory,
             $device->supplier,
             $device->location,
+            $device->device_number,
             $device->volume,
-            $device->billdate,
-            $device->device_number
-        ) . '">';
+            $device->billdate
+        );
 
         if($device->available) {
             $device->active = false;

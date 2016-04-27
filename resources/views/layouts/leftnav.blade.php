@@ -24,7 +24,6 @@
             </a>
             <ul>
                 <li><a href="/device">Übersicht</a></li>
-                <li><a href="/device/create">Hinzufügen</a></li>
                 <li><a href="/device?available=0">Verliehen</a></li>
                 <li><a href="/device?available=1">Verfügbar</a></li>
             </ul>
@@ -35,7 +34,6 @@
             </a>
             <ul>
                 <li><a href="/person">Übersicht</a></li>
-                <li><a href="/person/create">Hinzufügen</a></li>
             </ul>
         </li>
         <li>
@@ -44,7 +42,6 @@
             </a>
             <ul>
                 <li><a href="/loan">Übersicht</a></li>
-                <li><a href="/loan/create">Hinzufügen</a></li>
                 <li><a href="/loan?delayed">Verspätet</a></li>
             </ul>
         </li>
@@ -53,7 +50,6 @@
                 <i class="fa fa-cog"></i> <span>Administration</span>
             </a>
             <ul>
-                <li><a href="/admin/roles">Rollenverteilung</a></li>
                 <li><a href="/admin/log">Logs</a></li>
                 <li><a href="/admin/restoredevices">Gelöschte Geräte</a></li>
                 <li><a href="/admin/category">Kategorien</a></li>

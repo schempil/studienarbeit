@@ -1,7 +1,7 @@
 @extends('layouts.cp')
 
 @section('title')
-    Geräteübersicht
+    Geräteübersicht <a href="/device/create" class="btn btn-default"><i class="fa fa-plus"></i></a>
 @endsection
 
 @section('breadcrumbs')
